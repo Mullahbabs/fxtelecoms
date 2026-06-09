@@ -179,6 +179,7 @@
         font-weight: 700;
         padding: 0.9rem 2.2rem;
         border-radius: 40px;
+        margin-top: 20px;
         text-decoration: none;
         display: inline-block;
         box-shadow: 0 10px 20px -8px rgba(251, 191, 36, 0.5);
@@ -332,9 +333,7 @@
     <section id="home" class="hero-carousel">
       <div
         class="carousel-slide active"
-        style="
-          background-image: url(&quot;https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1470&auto=format&fit=crop&quot;);
-        "
+        style="background-image: url(../img/bg1.jpg)"
       >
         <div class="slide-overlay"></div>
         <div class="slide-content">
@@ -345,9 +344,7 @@
       </div>
       <div
         class="carousel-slide"
-        style="
-          background-image: url(&quot;https://images.unsplash.com/photo-1563986768609-322da13575f2?q=80&w=1470&auto=format&fit=crop&quot;);
-        "
+        style="background-image: url(&quot;img/bg2.jpg&quot;)"
       >
         <div class="slide-overlay"></div>
         <div class="slide-content">
@@ -406,15 +403,15 @@
       </div>
     </section>
 
-    <section id="consultation" style="background: #fbbf24">
+    <section id="consultation" style="background: #0f172a">
       <div class="container" style="text-align: center">
-        <h2>Free Consultation</h2>
+        <h2 style="color: white">Free Consultation</h2>
         <a
           href="https://wa.me/2347061835960?text=Hello%20FXT%20Telecom%2C%20I%20need%20a%20consultation."
           target="_blank"
           style="
-            background: #0f172a;
-            color: #fbbf24;
+            background: #25d366;
+            color: #fff;
             padding: 1rem 2rem;
             border-radius: 40px;
             text-decoration: none;
@@ -564,7 +561,7 @@
 
     <script>
       (function () {
-        emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // Replace with real key
+        emailjs.init("_PEwD_ZbRO1EoYbHU");
 
         const plansData = [
           {
@@ -695,7 +692,8 @@
               '<i class="fas fa-spinner fa-pulse"></i> Sending...';
             btn.disabled = true;
             try {
-              await emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+              D;
+              await emailjs.send("service_2lly29s", "template_uwphwco", {
                 full_name: document.getElementById("fullName").value,
                 address: document.getElementById("address").value,
                 email: document.getElementById("email").value,
@@ -708,7 +706,7 @@
               modal.style.visibility = "hidden";
               modal.style.opacity = "0";
             } catch (err) {
-              alert("EmailJS error. Check keys.");
+              alert("Backend not configured");
             } finally {
               btn.innerHTML = "Confirm & Activate";
               btn.disabled = false;
