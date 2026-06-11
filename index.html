@@ -18,6 +18,11 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a1928'/><text y='.9em' font-size='90' text-anchor='middle' fill='%23fbbf24'>📶</text></svg>"
+    />
     <!-- EmailJS SDK -->
     <script
       type="text/javascript"
@@ -56,6 +61,7 @@
         border-bottom: 2px solid #fbbf24;
         flex-wrap: wrap;
       }
+
       .logo {
         display: flex;
         align-items: center;
@@ -64,9 +70,29 @@
         font-size: 1.5rem;
         color: white;
         letter-spacing: -0.5px;
+        text-decoration: none;
       }
-      .logo i {
-        color: #fbbf24;
+
+      .logo-img {
+        height: 40px;
+        width: auto;
+        object-fit: contain;
+      }
+
+      .logo-img {
+        height: 35px;
+        width: auto;
+        object-fit: contain;
+      }
+
+      @media (max-width: 768px) {
+        .logo-img {
+          height: 30px;
+        }
+
+        .logo {
+          font-size: 1.2rem;
+        }
       }
       .nav-links {
         display: flex;
@@ -231,7 +257,7 @@
       }
       .plan-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 1.8rem;
       }
       .plan-card {
@@ -239,11 +265,70 @@
         border-radius: 24px;
         padding: 1.8rem;
         border: 2px solid #fde68a;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.25s ease;
+      }
+      .plan-card:hover {
+        border-color: #fbbf24;
+        box-shadow: 0 12px 24px rgba(251, 191, 36, 0.12);
+        transform: translateY(-3px);
+      }
+      .plan-card h3 {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        color: #78350f;
+        font-size: 1.2rem;
+      }
+      .plan-card h3 i {
+        color: #f59e0b;
+        font-size: 1.1rem;
       }
       .price {
         font-size: 2rem;
         font-weight: 800;
         color: #b45309;
+        margin: 0.4rem 0 0.6rem;
+      }
+      .plan-details {
+        list-style: none;
+        margin: 0.5rem 0 1rem;
+        padding: 0.8rem;
+        background: #fffbeb;
+        border-radius: 14px;
+        font-size: 0.9rem;
+        color: #78350f;
+        flex: 1;
+      }
+      .plan-details li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0;
+        border-bottom: 1px dashed #fde68a;
+      }
+      .plan-details li:last-child {
+        border-bottom: none;
+      }
+      .plan-details li i {
+        width: 1.1rem;
+        color: #d97706;
+        text-align: center;
+        font-size: 0.85rem;
+      }
+      .badge-shared {
+        display: inline-block;
+        background: #fef3c7;
+        color: #92400e;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+        margin-left: 0.3rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
       }
       .btn-outline {
         background: #fffbeb;
@@ -254,10 +339,41 @@
         border-radius: 30px;
         cursor: pointer;
         width: 100%;
-        margin-top: 1rem;
+        margin-top: auto;
+        transition: 0.2s;
+        font-size: 0.95rem;
       }
       .btn-outline:hover {
         background: #fbbf24;
+        border-color: #f59e0b;
+      }
+
+      /* Footer contact bar */
+      .footer-contact-bar {
+        background: #fffbeb;
+        border-top: 2px solid #fde68a;
+        border-bottom: 2px solid #fde68a;
+        padding: 1.2rem 1.5rem;
+        margin: 2rem 0 0;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem 2.5rem;
+        font-weight: 500;
+        color: #78350f;
+        font-size: 0.95rem;
+      }
+      .footer-contact-bar i {
+        color: #b45309;
+        margin-right: 0.3rem;
+      }
+      .footer-contact-bar span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        white-space: nowrap;
       }
 
       .modal-backdrop {
@@ -304,18 +420,117 @@
       footer {
         background: #0b1721;
         color: #fde68a;
-        padding: 3rem 2rem 1.5rem;
+        padding: 2rem 2rem 1.5rem;
+        text-align: center;
+      }
+
+      /* Modal Overlay Styles */
+      #checkoutModal,
+      #successModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        visibility: hidden;
+        opacity: 0;
+        transition:
+          visibility 0.3s,
+          opacity 0.3s ease;
+      }
+
+      #checkoutModal .modal-content,
+      #successModal .modal-content {
+        background: white;
+        border-radius: 16px;
+        padding: 30px;
+        max-width: 500px;
+        width: 90%;
+        position: relative;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .success-modal {
+        text-align: center;
+      }
+
+      .success-icon {
+        font-size: 60px;
+        color: #4caf50;
+        margin-bottom: 20px;
+      }
+
+      .success-modal h2 {
+        color: #333;
+        margin-bottom: 15px;
+        font-size: 24px;
+      }
+
+      .success-modal p {
+        color: #666;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+
+      .order-details {
+        background: #f5f5f5;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0;
+        text-align: left;
+      }
+
+      .order-details p {
+        margin: 8px 0;
+        color: #333;
+      }
+
+      .close-success {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        font-size: 28px;
+        cursor: pointer;
+        color: #999;
+        line-height: 1;
+      }
+
+      .close-success:hover {
+        color: #333;
+      }
+
+      #closeSuccessBtn {
+        background: #4caf50;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+        font-weight: 600;
+        transition: background 0.3s;
+      }
+
+      #closeSuccessBtn:hover {
+        background: #45a049;
       }
     </style>
   </head>
   <body>
     <!-- Responsive Navbar -->
     <nav class="navbar">
-      <div class="logo">
-        <i class="fas fa-wifi"></i> FXT<span style="color: #fbbf24"
-          >Telecom</span
-        >
-      </div>
+      <a href="index.html" class="logo">
+        <img src="logo.jpg" alt="FXT Telecom Logo" class="logo-img" />
+        FXT<span style="color: #fbbf24">Telecom</span>
+      </a>
       <button class="hamburger" id="hamburgerBtn">
         <i class="fas fa-bars"></i>
       </button>
@@ -333,7 +548,7 @@
     <section id="home" class="hero-carousel">
       <div
         class="carousel-slide active"
-        style="background-image: url(../img/bg1.jpg)"
+        style="background-image: url(../bg1.jpg)"
       >
         <div class="slide-overlay"></div>
         <div class="slide-content">
@@ -344,7 +559,7 @@
       </div>
       <div
         class="carousel-slide"
-        style="background-image: url(&quot;img/bg2.jpg&quot;)"
+        style="background-image: url(&quot;bg2.jpg&quot;)"
       >
         <div class="slide-overlay"></div>
         <div class="slide-content">
@@ -383,6 +598,13 @@
       </div>
     </section>
 
+    <!-- Footer Contact Bar (between offers and services) -->
+    <div class="footer-contact-bar">
+      <span><i class="fas fa-phone-alt"></i> 08154604014</span>
+      <span><i class="fas fa-globe"></i> FXTTelecom.com.ng</span>
+      <span><i class="fas fa-envelope"></i> Support@fxttelecom.com.ng</span>
+    </div>
+
     <section id="services">
       <div class="container">
         <h2 class="section-title">Services</h2>
@@ -407,7 +629,7 @@
       <div class="container" style="text-align: center">
         <h2 style="color: white">Free Consultation</h2>
         <a
-          href="https://wa.me/2347061835960?text=Hello%20FXT%20Telecom%2C%20I%20need%20a%20consultation."
+          href="https://wa.me/2348154604014?text=Hello%20FXT%20Telecom%2C%20I%20need%20a%20consultation."
           target="_blank"
           style="
             background: #25d366;
@@ -430,6 +652,13 @@
         <div id="dynamicPlansGrid" class="plan-grid"></div>
       </div>
     </section>
+
+    <!-- Footer Contact Bar (duplicated below plans for visibility) -->
+    <div class="footer-contact-bar">
+      <span><i class="fas fa-phone-alt"></i> 08154604014</span>
+      <span><i class="fas fa-globe"></i> FXTTelecom.com.ng</span>
+      <span><i class="fas fa-envelope"></i> Support@fxttelecom.com.ng</span>
+    </div>
 
     <!-- Checkout Modal with instructions -->
     <div id="checkoutModal" class="modal-backdrop">
@@ -547,22 +776,69 @@
     </div>
 
     <a
-      href="https://wa.me/2347061835960?text=Hello%20FXT%20Telecom%2C%20I%20need%20help%20with%20a%20plan."
+      href="https://wa.me/2348154604014?text=Hello%20FXT%20Telecom%2C%20I%20need%20help%20with%20a%20plan."
       target="_blank"
       class="whatsapp-float"
       ><i class="fab fa-whatsapp"></i
     ></a>
 
     <footer>
-      <div style="text-align: center">
-        © 2026 FXT Telecom. Vibrant connectivity.
+      <div style="text-align: center; margin-bottom: 0.5rem">
+        <span style="font-weight: 600">📞 08154604014</span> &nbsp;|&nbsp;
+        <span>🌐 FXTTelecom.com.ng</span> &nbsp;|&nbsp;
+        <span>✉️ Support@fxttelecom.com.ng</span>
+      </div>
+      <div>
+        © 2026 FXT Telecom. Vibrant connectivity.<br />
+        Powered By
+        <a
+          href="https://bellatechng.com"
+          style="text-decoration: none; color: #fbbf24"
+          >BellaTECH NG.</a
+        >
       </div>
     </footer>
 
+    <!-- Success Modal -->
+    <div id="successModal" style="visibility: hidden; opacity: 0">
+      <div class="modal-content success-modal">
+        <span class="close-success">&times;</span>
+        <div class="success-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h2>Order Submitted Successfully! ✅</h2>
+        <p>
+          Your order has been recieved. Please check your email for
+          confirmation.
+        </p>
+        <div class="order-details">
+          <p><strong>Plan:</strong> <span id="successPlanName"></span></p>
+          <p><strong>Amount:</strong> <span id="successPlanPrice"></span></p>
+        </div>
+        <button
+          class="btn-primary"
+          id="closeSuccessBtn"
+          style="
+            background: #4caf50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+          "
+        >
+          Got it!
+        </button>
+      </div>
+    </div>
+
     <script>
       (function () {
-        emailjs.init("_PEwD_ZbRO1EoYbHU");
+        emailjs.init("EskpykFBa4pz1uXEA");
 
+        // ===== COMPLETE plansData with ALL details from FXT Telecom Pricing Report =====
         const plansData = [
           {
             id: "free_trial",
@@ -571,6 +847,10 @@
             validity: "1 hour",
             speed: ">2 Mbps",
             dataCap: "5GB",
+            devices: "1 device",
+            shared: false,
+            category: "trial",
+            icon: "fa-gift",
           },
           {
             id: "ind_hourly",
@@ -578,6 +858,11 @@
             price: 300,
             validity: "1 hour",
             speed: ">2 Mbps",
+            dataCap: "5GB",
+            devices: "1 device",
+            shared: false,
+            category: "individual",
+            icon: "fa-clock",
           },
           {
             id: "ind_daily",
@@ -585,6 +870,11 @@
             price: 800,
             validity: "24 hours",
             speed: ">2 Mbps",
+            dataCap: "10GB",
+            devices: "1 device",
+            shared: false,
+            category: "individual",
+            icon: "fa-calendar-day",
           },
           {
             id: "ind_weekly",
@@ -592,43 +882,176 @@
             price: 4500,
             validity: "7 days",
             speed: ">2 Mbps",
+            dataCap: "Unlimited",
+            devices: "1 device",
+            shared: false,
+            category: "individual",
+            icon: "fa-calendar-week",
+          },
+          {
+            id: "ind_monthly",
+            name: "Individual Monthly",
+            price: 16000,
+            validity: "30 days",
+            speed: ">2 Mbps",
+            dataCap: "Unlimited",
+            devices: "1 device",
+            shared: false,
+            category: "individual",
+            icon: "fa-calendar-check",
           },
           {
             id: "friends_weekly",
             name: "Friends Weekly",
             price: 10000,
             validity: "7 days",
+            speed: ">2 Mbps",
+            dataCap: "Unlimited",
+            devices: "5 devices",
             shared: true,
+            category: "friends",
+            icon: "fa-user-friends",
+          },
+          {
+            id: "friends_monthly",
+            name: "Friends Monthly",
+            price: 35000,
+            validity: "30 days",
+            speed: ">2 Mbps",
+            dataCap: "Unlimited",
+            devices: "5 devices",
+            shared: true,
+            category: "friends",
+            icon: "fa-user-friends",
+          },
+          {
+            id: "family_weekly",
+            name: "Family Weekly",
+            price: 15000,
+            validity: "7 days",
+            speed: ">2 Mbps",
+            dataCap: "Unlimited",
+            devices: "8 devices",
+            shared: true,
+            category: "family",
+            icon: "fa-home",
           },
           {
             id: "family_monthly",
             name: "Family Monthly",
             price: 52000,
             validity: "30 days",
+            speed: ">2 Mbps",
+            dataCap: "Unlimited",
+            devices: "8 devices",
             shared: true,
+            category: "family",
+            icon: "fa-home",
+          },
+          {
+            id: "enterprise_custom",
+            name: "Custom Enterprise",
+            price: "150k – 450k",
+            validity: "3M / 6M / 1Y",
+            speed: "Dedicated",
+            dataCap: "Unlimited",
+            devices: "Unlimited devices",
+            shared: true,
+            category: "enterprise",
+            icon: "fa-building",
+            isRange: true,
           },
         ];
 
+        // Helper to format price display
+        function formatPrice(plan) {
+          if (plan.price === 0) return "FREE";
+          if (typeof plan.price === "string") return "₦" + plan.price;
+          return "₦" + plan.price.toLocaleString();
+        }
+
+        // Render cards with FULL detail labels
         function renderCards(containerId, filterFn) {
           const container = document.getElementById(containerId);
           if (!container) return;
           container.innerHTML = "";
-          (filterFn ? plansData.filter(filterFn) : plansData).forEach((p) => {
+
+          const plansToRender = filterFn
+            ? plansData.filter(filterFn)
+            : plansData;
+
+          plansToRender.forEach((p) => {
             const card = document.createElement("div");
             card.className = "plan-card";
-            card.innerHTML = `<h3>${p.name}</h3><div class="price">${p.price === 0 ? "FREE" : "₦" + p.price.toLocaleString()}</div>
-            <div>${p.validity} · ${p.speed}</div>
-            <button class="btn-outline" data-plan='${JSON.stringify(p)}'>Choose</button>`;
+
+            // Shared badge
+            const sharedBadge =
+              p.shared &&
+              p.devices &&
+              !p.devices.includes("1 device") &&
+              !p.devices.includes("Unlimited")
+                ? `<span class="badge-shared"><i class="fas fa-share-alt"></i> shared</span>`
+                : "";
+
+            // Build detail list items
+            let detailsHTML = "";
+
+            // Validity
+            if (p.validity) {
+              detailsHTML += `<li><i class="far fa-clock"></i> <strong>Validity:</strong> ${p.validity}</li>`;
+            }
+            // Speed
+            if (p.speed) {
+              detailsHTML += `<li><i class="fas fa-wifi"></i> <strong>Speed:</strong> ${p.speed}</li>`;
+            }
+            // Data Cap
+            if (p.dataCap) {
+              detailsHTML += `<li><i class="fas fa-database"></i> <strong>Data:</strong> ${p.dataCap}${p.dataCap !== "Unlimited" ? " cap" : ""}</li>`;
+            }
+            // Devices
+            if (p.devices) {
+              const deviceIcon = p.shared ? "fa-users" : "fa-user";
+              detailsHTML += `<li><i class="fas ${deviceIcon}"></i> <strong>Devices:</strong> ${p.devices}</li>`;
+            }
+
+            // Enterprise custom note
+            const enterpriseNote =
+              p.category === "enterprise"
+                ? `<p style="font-size:0.8rem; color:#a16207; margin-top:0.3rem; font-style:italic;"><i class="fas fa-headset"></i> Contact for custom quote</p>`
+                : "";
+
+            card.innerHTML = `
+              <h3>
+                <i class="fas ${p.icon || "fa-wifi"}"></i> ${p.name}
+                ${sharedBadge}
+              </h3>
+              <div class="price">${formatPrice(p)}${p.isRange ? ' <small style="font-size:0.9rem; font-weight:500;">range</small>' : ""}</div>
+              <ul class="plan-details">
+                ${detailsHTML}
+              </ul>
+              ${enterpriseNote}
+              <button class="btn-outline" data-plan='${JSON.stringify(p).replace(/'/g, "&#39;")}'>
+                <i class="fas fa-check-circle"></i> Choose
+              </button>
+            `;
             container.appendChild(card);
           });
-          document.querySelectorAll(".btn-outline").forEach((b) =>
-            b.addEventListener("click", (e) => {
-              openModal(JSON.parse(b.getAttribute("data-plan")));
-            }),
-          );
+
+          // Attach click handlers to all Choose buttons
+          document
+            .querySelectorAll("#" + containerId + " .btn-outline")
+            .forEach((b) =>
+              b.addEventListener("click", (e) => {
+                openModal(JSON.parse(b.getAttribute("data-plan")));
+              }),
+            );
         }
+
         renderCards("dynamicPlansGrid");
-        renderCards("dynamicOffersGrid", (p) => p.price <= 10000);
+        renderCards("dynamicOffersGrid", (p) => {
+          if (typeof p.price === "number") return p.price <= 10000;
+          return false; // exclude enterprise range from offers
+        });
 
         // Hamburger toggle
         document
@@ -662,23 +1085,42 @@
         setInterval(() => goTo((current + 1) % slides.length), 5000);
 
         const modal = document.getElementById("checkoutModal");
+        const successModal = document.getElementById("successModal");
         let selected = null;
+
         function openModal(plan) {
           selected = plan;
           document.getElementById("modalPlanName").innerText = plan.name;
           document.getElementById("modalPlanPrice").innerText =
-            plan.price === 0 ? "FREE" : "₦" + plan.price.toLocaleString();
+            formatPrice(plan);
           modal.style.visibility = "visible";
           modal.style.opacity = "1";
         }
+
         document.getElementById("closeModalBtn").onclick = () => {
           modal.style.visibility = "hidden";
           modal.style.opacity = "0";
         };
+
+        // Close success modal
+        document.querySelector(".close-success").onclick = () => {
+          successModal.style.visibility = "hidden";
+          successModal.style.opacity = "0";
+        };
+
+        document.getElementById("closeSuccessBtn").onclick = () => {
+          successModal.style.visibility = "hidden";
+          successModal.style.opacity = "0";
+        };
+
         window.onclick = (e) => {
           if (e.target === modal) {
             modal.style.visibility = "hidden";
             modal.style.opacity = "0";
+          }
+          if (e.target === successModal) {
+            successModal.style.visibility = "hidden";
+            successModal.style.opacity = "0";
           }
         };
 
@@ -687,28 +1129,130 @@
           .addEventListener("submit", async (e) => {
             e.preventDefault();
             if (!selected) return;
+
             const btn = e.target.querySelector("button");
+            const originalText = btn.innerHTML;
             btn.innerHTML =
-              '<i class="fas fa-spinner fa-pulse"></i> Sending...';
+              '<i class="fas fa-spinner fa-pulse"></i> Processing...';
             btn.disabled = true;
+
             try {
-              D;
-              await emailjs.send("service_2lly29s", "template_uwphwco", {
-                full_name: document.getElementById("fullName").value,
-                address: document.getElementById("address").value,
-                email: document.getElementById("email").value,
-                phone: document.getElementById("phone").value,
-                plan_name: selected.name,
-                plan_price:
-                  selected.price === 0 ? "Free" : "₦" + selected.price,
+              // Get form values
+              const fullName = document.getElementById("fullName").value.trim();
+              const email = document.getElementById("email").value.trim();
+              const phone = document.getElementById("phone").value.trim();
+              const address = document.getElementById("address").value.trim();
+              const planName = selected.name;
+              const planPrice = formatPrice(selected);
+              const orderDate = new Date().toLocaleString("en-NG", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
               });
-              alert("✅ Order submitted! Check your email.");
+
+              // Validate required fields
+              if (!fullName) {
+                alert("Please enter your full name");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                return;
+              }
+              if (!email) {
+                alert("Please enter your email address");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                return;
+              }
+              if (!phone) {
+                alert("Please enter your phone number");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                return;
+              }
+              if (!address) {
+                alert("Please enter your address");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                return;
+              }
+
+              // Template parameters (used for BOTH emails)
+              const templateParams = {
+                full_name: fullName,
+                email: email,
+                phone: phone,
+                address: address,
+                plan_name: planName,
+                plan_price: planPrice,
+                order_date: orderDate,
+              };
+
+              console.log("Sending with params:", templateParams);
+
+              // Send ADMIN notification email
+              await emailjs.send(
+                "service_xoh5hub",
+                "template_2fy243e", // Admin template
+                templateParams,
+              );
+
+              console.log("✅ Admin notification sent");
+
+              // Send CUSTOMER confirmation email
+              await emailjs.send(
+                "service_xoh5hub",
+                "template_q8g9smm", // Customer template
+                templateParams,
+              );
+
+              console.log("✅ Customer confirmation sent");
+
+              // Success - hide checkout modal
               modal.style.visibility = "hidden";
               modal.style.opacity = "0";
+
+              // Show success modal
+              document.getElementById("successPlanName").innerText = planName;
+              document.getElementById("successPlanPrice").innerText = planPrice;
+              successModal.style.visibility = "visible";
+              successModal.style.opacity = "1";
+
+              // Reset form
+              e.target.reset();
             } catch (err) {
-              alert("Backend not configured");
+              console.error("EmailJS Error:", err);
+
+              if (err.status === 412) {
+                alert(
+                  "Template error: Variables mismatch. Check console for details.",
+                );
+                console.error(
+                  "Make sure these variables exist in your EmailJS template:",
+                  Object.keys({
+                    full_name: true,
+                    email: true,
+                    phone: true,
+                    address: true,
+                    plan_name: true,
+                    plan_price: true,
+                    order_date: true,
+                  }),
+                );
+              } else if (err.text === "service_not_found") {
+                alert("Service ID not found. Check your EmailJS service ID.");
+              } else if (err.text === "template_not_found") {
+                alert("Template ID not found. Check your EmailJS template ID.");
+              } else {
+                alert(
+                  "Failed to process order. Please try again. Error: " +
+                    (err.text || err.message),
+                );
+              }
             } finally {
-              btn.innerHTML = "Confirm & Activate";
+              btn.innerHTML = originalText;
               btn.disabled = false;
             }
           });
