@@ -232,6 +232,245 @@
         border-radius: 20px;
       }
 
+      /* About Us Content Row */
+      .about-content-row {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        margin: 2.5rem 0 3rem;
+        flex-wrap: wrap;
+      }
+
+      .about-image-wrapper {
+        flex: 1 1 400px;
+        min-width: 280px;
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(251, 191, 36, 0.15);
+        transition: transform 0.3s ease;
+      }
+
+      .about-image-wrapper:hover {
+        transform: translateY(-5px);
+      }
+
+      .about-image-wrapper img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 24px;
+        object-fit: cover;
+        aspect-ratio: 4/3;
+      }
+
+      .about-image-badge {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background: rgba(10, 25, 40, 0.9);
+        backdrop-filter: blur(8px);
+        color: #fbbf24;
+        padding: 0.6rem 1.2rem;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: 1px solid rgba(251, 191, 36, 0.3);
+      }
+
+      .about-text-wrapper {
+        flex: 1 1 400px;
+        min-width: 280px;
+      }
+
+      .about-text-wrapper h3 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #78350f;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+
+      .about-text-wrapper .highlight {
+        color: #f59e0b;
+        position: relative;
+      }
+
+      .about-text-wrapper .subtitle {
+        font-size: 1rem;
+        color: #a16207;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .about-text-wrapper .subtitle::before {
+        content: "";
+        display: inline-block;
+        width: 30px;
+        height: 3px;
+        background: #fbbf24;
+        border-radius: 2px;
+      }
+
+      .about-text-wrapper p {
+        color: #57534e;
+        line-height: 1.8;
+        margin-bottom: 1.2rem;
+        font-size: 1rem;
+      }
+
+      .about-stats-row {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        margin: 1.5rem 0;
+      }
+
+      .about-stat {
+        text-align: center;
+        background: #fffbeb;
+        padding: 1rem 1.2rem;
+        border-radius: 16px;
+        border: 1px solid #fde68a;
+        min-width: 90px;
+        flex: 1;
+        transition: 0.2s;
+      }
+
+      .about-stat:hover {
+        background: #fef3c7;
+        border-color: #fbbf24;
+        transform: translateY(-2px);
+      }
+
+      .about-stat .stat-number {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #b45309;
+        line-height: 1;
+      }
+
+      .about-stat .stat-label {
+        font-size: 0.8rem;
+        color: #92400e;
+        margin-top: 0.3rem;
+        font-weight: 500;
+      }
+
+      .about-features-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+
+      .about-features-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: #44403c;
+        font-weight: 500;
+        font-size: 0.95rem;
+      }
+
+      .about-features-list li i {
+        color: #22c55e;
+        font-size: 1rem;
+        width: 22px;
+        height: 22px;
+        background: #f0fdf4;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        flex-shrink: 0;
+      }
+
+      .btn-about {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #fbbf24;
+        color: #0f172a;
+        font-weight: 700;
+        padding: 0.8rem 2rem;
+        border-radius: 30px;
+        text-decoration: none;
+        transition: 0.3s;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(251, 191, 36, 0.3);
+      }
+
+      .btn-about:hover {
+        background: #f59e0b;
+        transform: translateY(-2px);
+        box-shadow: 0 12px 28px rgba(251, 191, 36, 0.4);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .about-content-row {
+          flex-direction: column;
+          gap: 2rem;
+          text-align: center;
+        }
+
+        .about-image-wrapper {
+          min-width: 100%;
+          order: -1;
+        }
+
+        .about-text-wrapper {
+          min-width: 100%;
+        }
+
+        .about-stats-row {
+          justify-content: center;
+        }
+
+        .about-features-list li {
+          justify-content: center;
+        }
+
+        .about-text-wrapper .subtitle {
+          justify-content: center;
+        }
+
+        .btn-about {
+          margin: 0 auto;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .about-image-badge {
+          bottom: 10px;
+          left: 10px;
+          padding: 0.4rem 0.8rem;
+          font-size: 0.75rem;
+        }
+
+        .about-stat {
+          min-width: 70px;
+          padding: 0.8rem;
+        }
+
+        .about-stat .stat-number {
+          font-size: 1.4rem;
+        }
+      }
+
       section {
         padding: 4rem 0;
       }
@@ -239,6 +478,7 @@
         font-size: 2.2rem;
         font-weight: 700;
         text-align: center;
+        margin-bottom: 20px;
       }
       .grid-3 {
         display: grid;
@@ -417,6 +657,278 @@
         z-index: 40;
         text-decoration: none;
       }
+
+      /* AI Shuffle Float Button - Left Side */
+      .ai-shuffle-float {
+        position: fixed;
+        bottom: 25px;
+        left: 25px;
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: white;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        box-shadow: 0 6px 18px rgba(99, 102, 241, 0.5);
+        z-index: 40;
+        cursor: pointer;
+        border: none;
+        transition: all 0.3s ease;
+        animation: pulse-ai 2s infinite;
+      }
+      .ai-shuffle-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 24px rgba(99, 102, 241, 0.6);
+      }
+      @keyframes pulse-ai {
+        0%,
+        100% {
+          box-shadow: 0 6px 18px rgba(99, 102, 241, 0.5);
+        }
+        50% {
+          box-shadow: 0 6px 28px rgba(139, 92, 246, 0.7);
+        }
+      }
+
+      /* AI Chat Modal */
+      .ai-chat-modal {
+        position: fixed;
+        bottom: 95px;
+        left: 25px;
+        width: 380px;
+        max-width: 90vw;
+        height: 520px;
+        max-height: 70vh;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        z-index: 41;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border: 2px solid #6366f1;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.3s ease;
+      }
+      .ai-chat-modal.open {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .ai-chat-header {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: white;
+        padding: 1rem 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-weight: 700;
+      }
+      .ai-chat-header button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.3rem;
+        cursor: pointer;
+      }
+      .ai-chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        background: #fafafa;
+      }
+      .ai-msg {
+        background: #e8e6ff;
+        padding: 0.7rem 1rem;
+        border-radius: 18px 18px 18px 4px;
+        max-width: 85%;
+        align-self: flex-start;
+        font-size: 0.9rem;
+        color: #1e1b4b;
+        animation: fadeInMsg 0.3s ease;
+      }
+      .user-msg {
+        background: #6366f1;
+        color: white;
+        padding: 0.7rem 1rem;
+        border-radius: 18px 18px 4px 18px;
+        max-width: 85%;
+        align-self: flex-end;
+        font-size: 0.9rem;
+        animation: fadeInMsg 0.3s ease;
+      }
+      @keyframes fadeInMsg {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .ai-chat-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: white;
+        border-top: 1px solid #e5e7eb;
+      }
+      .ai-option-btn {
+        background: #f3f4f6;
+        border: 1px solid #d1d5db;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #374151;
+        transition: 0.2s;
+        white-space: nowrap;
+      }
+      .ai-option-btn:hover {
+        background: #6366f1;
+        color: white;
+        border-color: #6366f1;
+      }
+      .ai-typing-indicator {
+        display: flex;
+        gap: 4px;
+        padding: 0.5rem 1rem;
+        align-self: flex-start;
+      }
+      .ai-typing-indicator span {
+        width: 8px;
+        height: 8px;
+        background: #a5b4fc;
+        border-radius: 50%;
+        animation: typingBounce 1.4s infinite;
+      }
+      .ai-typing-indicator span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .ai-typing-indicator span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      @keyframes typingBounce {
+        0%,
+        60%,
+        100% {
+          transform: translateY(0);
+        }
+        30% {
+          transform: translateY(-8px);
+        }
+      }
+
+      /* Terms Modal */
+      .terms-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1001;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.3s;
+      }
+      .terms-modal.open {
+        visibility: visible;
+        opacity: 1;
+      }
+      .terms-content {
+        background: white;
+        border-radius: 20px;
+        max-width: 700px;
+        width: 90%;
+        max-height: 80vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        border: 2px solid #fbbf24;
+      }
+      .terms-header {
+        background: #fbbf24;
+        color: #0f172a;
+        padding: 1rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 700;
+      }
+      .terms-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1.5rem;
+        font-size: 0.85rem;
+        line-height: 1.7;
+        color: #374151;
+      }
+      .terms-body h3 {
+        color: #92400e;
+        margin: 1rem 0 0.5rem;
+      }
+      .terms-body h3:first-child {
+        margin-top: 0;
+      }
+      .terms-body ul {
+        padding-left: 1.2rem;
+        margin: 0.5rem 0;
+      }
+      .terms-body li {
+        margin-bottom: 0.3rem;
+      }
+      .terms-footer {
+        padding: 1rem 1.5rem;
+        border-top: 1px solid #fde68a;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .btn-close-terms {
+        background: #fbbf24;
+        color: #0f172a;
+        border: none;
+        padding: 0.7rem 2rem;
+        border-radius: 30px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      /* Terms checkbox in checkout modal */
+      .terms-checkbox-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin: 1rem 0;
+        font-size: 0.85rem;
+        color: #78350f;
+      }
+      .terms-checkbox-row input {
+        margin-top: 2px;
+        width: auto;
+        accent-color: #fbbf24;
+      }
+      .terms-checkbox-row a {
+        color: #b45309;
+        text-decoration: underline;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
       footer {
         background: #0b1721;
         color: #fde68a;
@@ -522,6 +1034,27 @@
       #closeSuccessBtn:hover {
         background: #45a049;
       }
+
+      /* POS card special styling */
+      .pos-card {
+        border-color: #22c55e !important;
+        background: #f0fdf4 !important;
+      }
+      .pos-card .price {
+        color: #15803d !important;
+      }
+      .pos-badge {
+        display: inline-block;
+        background: #22c55e;
+        color: white;
+        font-size: 0.65rem;
+        font-weight: 700;
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+        margin-left: 0.3rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
     </style>
   </head>
   <body>
@@ -574,6 +1107,86 @@
     <section id="about">
       <div class="container">
         <h2 class="section-title">About Us</h2>
+
+        <!-- About Content Row: Image Left, Text Right -->
+        <div class="about-content-row">
+          <!-- Image on Left -->
+          <div class="about-image-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop"
+              alt="FXT Telecom Team providing high-speed internet services"
+              loading="lazy"
+            />
+            <div class="about-image-badge">
+              <i class="fas fa-shield-alt"></i> Trusted by 50k+ Nigerians
+            </div>
+          </div>
+
+          <!-- Text on Right -->
+          <div class="about-text-wrapper">
+            <p class="subtitle">Nigeria's Fastest Growing ISP</p>
+            <h3>
+              Connecting You to <span class="highlight">What Matters Most</span>
+            </h3>
+            <p>
+              At FXT Telecom, we believe everyone deserves fast, reliable, and
+              affordable internet. From bustling cities to quiet neighborhoods,
+              we deliver blazing speeds above 2Mbps with flexible plans designed
+              for individuals, families, and businesses.
+            </p>
+            <p>
+              Our mission is simple: bridge the digital divide in Nigeria with
+              transparent pricing, exceptional customer support, and network
+              infrastructure you can depend on — 24/7.
+            </p>
+
+            <!-- Stats Row -->
+            <div class="about-stats-row">
+              <div class="about-stat">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Happy Users</div>
+              </div>
+              <div class="about-stat">
+                <div class="stat-number">36</div>
+                <div class="stat-label">States Covered</div>
+              </div>
+              <div class="about-stat">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Uptime</div>
+              </div>
+              <div class="about-stat">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support</div>
+              </div>
+            </div>
+
+            <!-- Features List -->
+            <ul class="about-features-list">
+              <li>
+                <i class="fas fa-check"></i> Bank-grade security with MONIEPOINT
+                MFB payments
+              </li>
+              <li>
+                <i class="fas fa-check"></i> No hidden fees — what you see is
+                what you pay
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Free consultation and 24/7 customer
+                support
+              </li>
+              <li>
+                <i class="fas fa-check"></i> Instant activation after payment
+                confirmation
+              </li>
+            </ul>
+
+            <a href="#plans" class="btn-about">
+              <i class="fas fa-bolt"></i> Explore Our Plans
+            </a>
+          </div>
+        </div>
+
+        <!-- Existing Grid-3 Cards -->
         <div class="grid-3">
           <div class="card">
             <h3>Trusted</h3>
@@ -629,7 +1242,7 @@
       <div class="container" style="text-align: center">
         <h2 style="color: white">Free Consultation</h2>
         <a
-          href="https://wa.me/2348154604014?text=Hello%20FXT%20Telecom%2C%20I%20need%20a%20consultation."
+          href="https://wa.me/2347061835960?text=Hello%20FXT%20Telecom%2C%20I%20need%20a%20consultation."
           target="_blank"
           style="
             background: #25d366;
@@ -756,8 +1369,19 @@
                 border-radius: 20px;
               "
             />
+            <!-- Terms and Conditions Checkbox -->
+            <div class="terms-checkbox-row">
+              <input type="checkbox" id="termsCheckbox" required />
+              <label for="termsCheckbox">
+                I have read and agree to the
+                <a id="openTermsFromCheckout" href="javascript:void(0)"
+                  >Terms and Conditions</a
+                >
+              </label>
+            </div>
             <button
               type="submit"
+              id="checkoutSubmitBtn"
               style="
                 background: #fbbf24;
                 color: #0f172a;
@@ -766,6 +1390,7 @@
                 border: none;
                 border-radius: 30px;
                 font-weight: 700;
+                cursor: pointer;
               "
             >
               Confirm & Activate
@@ -775,8 +1400,405 @@
       </div>
     </div>
 
+    <!-- Terms and Conditions Modal -->
+    <div id="termsModal" class="terms-modal">
+      <div class="terms-content">
+        <div class="terms-header">
+          <span><i class="fas fa-file-contract"></i> Terms and Conditions</span>
+          <button
+            id="closeTermsModalBtn"
+            style="
+              background: none;
+              border: none;
+              font-size: 1.5rem;
+              cursor: pointer;
+              color: #0f172a;
+            "
+          >
+            &times;
+          </button>
+        </div>
+        <div class="terms-body">
+          <h3>FXT TELECOM SERVICES</h3>
+          <h3>Terms and Conditions of Service</h3>
+          <p>
+            <strong>Effective Date:</strong> January 1, 2026<br /><strong
+              >Version:</strong
+            >
+            1.0
+          </p>
+          <p>
+            Welcome to FXT Telecom. These Terms and Conditions ("Agreement")
+            govern the provision and use of internet, telecommunications, and
+            related services provided by FXT Telecom ("FXT Telecom," "we,"
+            "our," or "us"). By subscribing to, accessing, or using our
+            services, you agree to be bound by these Terms and Conditions.
+          </p>
+
+          <h3>1. Definitions</h3>
+          <p>
+            <strong>Customer</strong> means any individual, business,
+            organization, or entity subscribing to FXT Telecom services.
+          </p>
+          <p>
+            <strong>Services</strong> means internet access, wireless broadband,
+            networking services, managed connectivity solutions, VoIP services,
+            equipment leasing, installation services, and any other
+            telecommunications services provided by FXT Telecom.
+          </p>
+          <p>
+            <strong>Equipment</strong> means routers, access points, antennas,
+            cables, modems, switches, power supplies, and any other devices
+            supplied by FXT Telecom.
+          </p>
+          <p>
+            <strong>Network</strong> means the telecommunications infrastructure
+            owned, leased, or operated by FXT Telecom.
+          </p>
+
+          <h3>2. Eligibility</h3>
+          <p>To subscribe to our services, you must:</p>
+          <ul>
+            <li>
+              Be at least 18 years old or have legal authority to enter into a
+              binding agreement.
+            </li>
+            <li>Provide accurate and complete registration information.</li>
+            <li>Maintain current contact and billing information.</li>
+          </ul>
+          <p>
+            FXT Telecom reserves the right to reject any service application at
+            its sole discretion.
+          </p>
+
+          <h3>3. Service Provision</h3>
+          <p>
+            FXT Telecom shall use commercially reasonable efforts to provide
+            reliable telecommunications services.
+          </p>
+          <p>Service availability, speed, and performance may vary due to:</p>
+          <ul>
+            <li>Network congestion</li>
+            <li>Equipment limitations</li>
+            <li>Weather conditions</li>
+            <li>Power outages</li>
+            <li>Third-party infrastructure failures</li>
+            <li>Maintenance activities</li>
+            <li>Force majeure events</li>
+          </ul>
+          <p>
+            All advertised speeds are "up to" speeds and are not guaranteed at
+            all times.
+          </p>
+
+          <h3>4. Installation and Equipment</h3>
+          <p><strong>4.1 Installation</strong></p>
+          <p>
+            Customers shall provide reasonable access to premises for
+            installation, maintenance, upgrades, and service restoration.
+          </p>
+          <p>
+            Additional installation charges may apply for non-standard
+            installations.
+          </p>
+          <p><strong>4.2 Customer-Owned Equipment</strong></p>
+          <p>
+            Customers may use compatible equipment subject to FXT Telecom
+            approval.
+          </p>
+          <p>
+            FXT Telecom is not responsible for service degradation caused by
+            customer-owned equipment.
+          </p>
+          <p><strong>4.3 FXT-Owned Equipment</strong></p>
+          <p>
+            Equipment supplied by FXT Telecom remains our property unless
+            explicitly sold to the customer.
+          </p>
+          <p>Customers shall:</p>
+          <ul>
+            <li>Keep equipment in good condition.</li>
+            <li>Prevent unauthorized tampering.</li>
+            <li>Return leased equipment upon service termination.</li>
+          </ul>
+          <p>
+            Customers may be charged replacement costs for lost, stolen,
+            damaged, or unreturned equipment.
+          </p>
+
+          <h3>5. Billing and Payments</h3>
+          <p><strong>5.1 Charges</strong></p>
+          <p>Customers agree to pay:</p>
+          <ul>
+            <li>Subscription fees</li>
+            <li>Installation fees</li>
+            <li>Equipment charges</li>
+            <li>Taxes and regulatory fees</li>
+            <li>Any applicable service charges</li>
+          </ul>
+          <p><strong>5.2 Payment Due Date</strong></p>
+          <p>
+            Invoices are payable on or before the due date stated on the
+            invoice.
+          </p>
+          <p><strong>5.3 Late Payments</strong></p>
+          <p>FXT Telecom reserves the right to:</p>
+          <ul>
+            <li>Suspend service</li>
+            <li>Restrict service</li>
+            <li>Apply late payment charges</li>
+            <li>Terminate service for prolonged non-payment</li>
+          </ul>
+          <p><strong>5.4 No Refund Policy</strong></p>
+          <p>
+            Unless required by law or expressly approved by FXT Telecom,
+            subscription fees are non-refundable.
+          </p>
+
+          <h3>6. Acceptable Use Policy</h3>
+          <p>Customers shall not use FXT Telecom services to:</p>
+          <p><strong>Illegal Activities</strong></p>
+          <ul>
+            <li>Violate any local, national, or international law.</li>
+            <li>Engage in fraud, identity theft, or financial crimes.</li>
+            <li>Distribute illegal content.</li>
+          </ul>
+          <p><strong>Network Abuse</strong></p>
+          <ul>
+            <li>Attempt unauthorized access to networks or systems.</li>
+            <li>Conduct denial-of-service attacks.</li>
+            <li>Spread malware, viruses, or harmful software.</li>
+            <li>Circumvent network security controls.</li>
+          </ul>
+          <p><strong>Excessive Usage</strong></p>
+          <p>
+            Customers shall not engage in activities that unreasonably interfere
+            with network performance for other users.
+          </p>
+          <p>
+            FXT Telecom reserves the right to implement fair usage policies
+            where necessary.
+          </p>
+          <p><strong>Resale Restrictions</strong></p>
+          <p>
+            Customers may not resell, redistribute, or share services without
+            written authorization from FXT Telecom.
+          </p>
+
+          <h3>7. Service Suspension</h3>
+          <p>FXT Telecom may suspend services without prior notice if:</p>
+          <ul>
+            <li>Payment is overdue.</li>
+            <li>Illegal or prohibited activity is suspected.</li>
+            <li>Network integrity is threatened.</li>
+            <li>Required by law or regulatory authorities.</li>
+            <li>Emergency maintenance is required.</li>
+          </ul>
+          <p>
+            Suspension shall not relieve customers of outstanding payment
+            obligations.
+          </p>
+
+          <h3>8. Maintenance and Network Management</h3>
+          <p>FXT Telecom may perform:</p>
+          <ul>
+            <li>Scheduled maintenance</li>
+            <li>Emergency repairs</li>
+            <li>Network upgrades</li>
+            <li>Capacity improvements</li>
+          </ul>
+          <p>
+            Reasonable efforts will be made to notify customers of planned
+            maintenance whenever practicable.
+          </p>
+
+          <h3>9. Customer Responsibilities</h3>
+          <p>Customers agree to:</p>
+          <ul>
+            <li>Maintain secure passwords and network credentials.</li>
+            <li>Protect equipment from theft or damage.</li>
+            <li>Report service faults promptly.</li>
+            <li>
+              Ensure lawful use by all persons accessing services through their
+              account.
+            </li>
+          </ul>
+          <p>
+            Customers remain responsible for all activities conducted through
+            their connection.
+          </p>
+
+          <h3>10. Service Availability</h3>
+          <p>
+            FXT Telecom does not guarantee uninterrupted or error-free service.
+          </p>
+          <p>Service interruptions may occur due to:</p>
+          <ul>
+            <li>Equipment failure</li>
+            <li>Fiber cuts</li>
+            <li>Power failures</li>
+            <li>Weather events</li>
+            <li>Government actions</li>
+            <li>Third-party provider outages</li>
+          </ul>
+          <p>
+            No service-level commitment applies unless specifically stated in a
+            separate Service Level Agreement (SLA).
+          </p>
+
+          <h3>11. Limitation of Liability</h3>
+          <p>To the maximum extent permitted by law:</p>
+          <p>FXT Telecom shall not be liable for:</p>
+          <ul>
+            <li>Loss of profits</li>
+            <li>Loss of business opportunities</li>
+            <li>Loss of data</li>
+            <li>Indirect damages</li>
+            <li>Consequential damages</li>
+            <li>Special or punitive damages</li>
+          </ul>
+          <p>
+            FXT Telecom's total liability for any claim shall not exceed the
+            amount paid by the customer for the affected service during the
+            preceding three (3) months.
+          </p>
+
+          <h3>12. Indemnification</h3>
+          <p>
+            Customers agree to indemnify and hold harmless FXT Telecom, its
+            directors, officers, employees, contractors, and affiliates against
+            any claims, damages, liabilities, costs, or expenses arising from:
+          </p>
+          <ul>
+            <li>Customer misuse of services</li>
+            <li>Violation of these Terms</li>
+            <li>Infringement of third-party rights</li>
+            <li>Illegal activities conducted through customer accounts</li>
+          </ul>
+
+          <h3>13. Privacy and Data Protection</h3>
+          <p>FXT Telecom collects and processes customer information for:</p>
+          <ul>
+            <li>Service delivery</li>
+            <li>Billing</li>
+            <li>Customer support</li>
+            <li>Regulatory compliance</li>
+            <li>Network security</li>
+          </ul>
+          <p>
+            Personal information shall be handled in accordance with applicable
+            data protection laws and FXT Telecom's Privacy Policy.
+          </p>
+
+          <h3>14. Intellectual Property</h3>
+          <p>
+            All trademarks, logos, software, documentation, and service
+            materials provided by FXT Telecom remain the exclusive property of
+            FXT Telecom or its licensors.
+          </p>
+          <p>
+            Customers receive no ownership rights except those expressly granted
+            under these Terms.
+          </p>
+
+          <h3>15. Force Majeure</h3>
+          <p>
+            FXT Telecom shall not be liable for any failure or delay resulting
+            from events beyond its reasonable control, including:
+          </p>
+          <ul>
+            <li>Natural disasters</li>
+            <li>Floods</li>
+            <li>Fire</li>
+            <li>Lightning</li>
+            <li>Civil unrest</li>
+            <li>Terrorism</li>
+            <li>Government restrictions</li>
+            <li>Labor disputes</li>
+            <li>Internet backbone failures</li>
+            <li>Power grid failures</li>
+          </ul>
+
+          <h3>16. Termination</h3>
+          <p><strong>By Customer</strong></p>
+          <p>
+            Customers may terminate services by providing at least thirty (30)
+            days written notice and settling all outstanding balances.
+          </p>
+          <p><strong>By FXT Telecom</strong></p>
+          <p>FXT Telecom may terminate services immediately if:</p>
+          <ul>
+            <li>The customer breaches these Terms.</li>
+            <li>Fraudulent activity is detected.</li>
+            <li>Required by law.</li>
+            <li>Service provision becomes commercially impractical.</li>
+          </ul>
+          <p>Termination does not waive any accrued rights or obligations.</p>
+
+          <h3>17. Dispute Resolution</h3>
+          <p>
+            The parties shall first attempt to resolve disputes through
+            good-faith negotiation.
+          </p>
+          <p>
+            If unresolved within thirty (30) days, disputes shall be submitted
+            to mediation before litigation.
+          </p>
+          <p>
+            Any legal proceedings shall be brought before courts having
+            jurisdiction in the Federal Republic of Nigeria.
+          </p>
+
+          <h3>18. Regulatory Compliance</h3>
+          <p>
+            Customers agree to comply with all applicable laws, regulations, and
+            directives issued by the relevant telecommunications and regulatory
+            authorities in Nigeria, including applicable directives from the
+            Nigerian Communications Commission.
+          </p>
+
+          <h3>19. Amendments</h3>
+          <p>FXT Telecom may modify these Terms from time to time.</p>
+          <p>
+            Updated Terms shall become effective upon publication on FXT
+            Telecom's website, customer portal, or other official communication
+            channels.
+          </p>
+          <p>
+            Continued use of services after such publication constitutes
+            acceptance of the revised Terms.
+          </p>
+
+          <p><strong>Customer Acknowledgment</strong></p>
+          <p>
+            By subscribing to or using FXT Telecom services, the Customer
+            acknowledges that they have read, understood, and agree to be bound
+            by these Terms and conditions.
+          </p>
+        </div>
+        <div class="terms-footer">
+          <button class="btn-close-terms" id="closeTermsBtn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Shuffle Float Button (Left Side) -->
+    <button class="ai-shuffle-float" id="aiShuffleBtn" title="AI Plan Advisor">
+      <i class="fas fa-shuffle"></i>
+    </button>
+
+    <!-- AI Chat Modal -->
+    <div class="ai-chat-modal" id="aiChatModal">
+      <div class="ai-chat-header">
+        <span><i class="fas fa-robot"></i> AI Plan Advisor</span>
+        <button id="closeAiChatBtn">&times;</button>
+      </div>
+      <div class="ai-chat-messages" id="aiChatMessages"></div>
+      <div class="ai-chat-options" id="aiChatOptions"></div>
+    </div>
+
     <a
-      href="https://wa.me/2348154604014?text=Hello%20FXT%20Telecom%2C%20I%20need%20help%20with%20a%20plan."
+      href="https://wa.me/2347061835960?text=Hello%20FXT%20Telecom%2C%20I%20need%20help%20with%20a%20plan."
       target="_blank"
       class="whatsapp-float"
       ><i class="fab fa-whatsapp"></i
@@ -787,6 +1809,20 @@
         <span style="font-weight: 600">📞 08154604014</span> &nbsp;|&nbsp;
         <span>🌐 FXTTelecom.com.ng</span> &nbsp;|&nbsp;
         <span>✉️ Support@fxttelecom.com.ng</span>
+      </div>
+      <div style="margin-bottom: 0.5rem">
+        <a
+          href="javascript:void(0)"
+          id="footerTermsLink"
+          style="
+            color: #fbbf24;
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: 500;
+          "
+        >
+          <i class="fas fa-file-contract"></i> Terms and Conditions
+        </a>
       </div>
       <div>
         © 2026 FXT Telecom. Vibrant connectivity.<br />
@@ -963,11 +1999,107 @@
           },
         ];
 
+        // ===== POS Plans Data (for Special Offers section) =====
+        const posPlansData = [
+          {
+            id: "pos_daily",
+            name: "POS 1 Day",
+            price: 100,
+            validity: "1 day",
+            speed: ">2 Mbps",
+            dataCap: "Unlimited",
+            devices: "1 device",
+            shared: false,
+            category: "pos",
+            icon: "fa-cash-register",
+            posLabel: "POS",
+          },
+          {
+            id: "pos_weekly",
+            name: "POS 1 Week",
+            price: 500,
+            validity: "1 week",
+            speed: ">2 Mbps",
+            dataCap: "Unlimited",
+            devices: "1 device",
+            shared: false,
+            category: "pos",
+            icon: "fa-cash-register",
+            posLabel: "POS",
+          },
+          {
+            id: "pos_monthly",
+            name: "POS 1 Month",
+            price: 1300,
+            validity: "1 month",
+            speed: ">2 Mbps",
+            dataCap: "Unlimited",
+            devices: "1 device",
+            shared: false,
+            category: "pos",
+            icon: "fa-cash-register",
+            posLabel: "POS",
+          },
+        ];
+
         // Helper to format price display
         function formatPrice(plan) {
           if (plan.price === 0) return "FREE";
           if (typeof plan.price === "string") return "₦" + plan.price;
           return "₦" + plan.price.toLocaleString();
+        }
+
+        // Render a single plan card (reusable)
+        function createPlanCard(p, isPos = false) {
+          const card = document.createElement("div");
+          card.className = "plan-card" + (isPos ? " pos-card" : "");
+
+          const sharedBadge =
+            p.shared &&
+            p.devices &&
+            !p.devices.includes("1 device") &&
+            !p.devices.includes("Unlimited")
+              ? `<span class="badge-shared"><i class="fas fa-share-alt"></i> shared</span>`
+              : "";
+
+          const posBadge = isPos ? `<span class="pos-badge">POS</span>` : "";
+
+          let detailsHTML = "";
+          if (p.validity) {
+            detailsHTML += `<li><i class="far fa-clock"></i> <strong>Validity:</strong> ${p.validity}</li>`;
+          }
+          if (p.speed) {
+            detailsHTML += `<li><i class="fas fa-wifi"></i> <strong>Speed:</strong> ${p.speed}</li>`;
+          }
+          if (p.dataCap) {
+            detailsHTML += `<li><i class="fas fa-database"></i> <strong>Data:</strong> ${p.dataCap}${p.dataCap !== "Unlimited" ? " cap" : ""}</li>`;
+          }
+          if (p.devices) {
+            const deviceIcon = p.shared ? "fa-users" : "fa-user";
+            detailsHTML += `<li><i class="fas ${deviceIcon}"></i> <strong>Devices:</strong> ${p.devices}</li>`;
+          }
+
+          const enterpriseNote =
+            p.category === "enterprise"
+              ? `<p style="font-size:0.8rem; color:#a16207; margin-top:0.3rem; font-style:italic;"><i class="fas fa-headset"></i> Contact for custom quote</p>`
+              : "";
+
+          card.innerHTML = `
+            <h3>
+              <i class="fas ${p.icon || "fa-wifi"}"></i> ${p.name}
+              ${sharedBadge}${posBadge}
+            </h3>
+            <div class="price">${formatPrice(p)}${p.isRange ? ' <small style="font-size:0.9rem; font-weight:500;">range</small>' : ""}</div>
+            <ul class="plan-details">
+              ${detailsHTML}
+            </ul>
+            ${enterpriseNote}
+            <button class="btn-outline" data-plan='${JSON.stringify(p).replace(/'/g, "&#39;")}'>
+              <i class="fas fa-check-circle"></i> Choose
+            </button>
+          `;
+
+          return card;
         }
 
         // Render cards with FULL detail labels
@@ -981,77 +2113,375 @@
             : plansData;
 
           plansToRender.forEach((p) => {
-            const card = document.createElement("div");
-            card.className = "plan-card";
-
-            // Shared badge
-            const sharedBadge =
-              p.shared &&
-              p.devices &&
-              !p.devices.includes("1 device") &&
-              !p.devices.includes("Unlimited")
-                ? `<span class="badge-shared"><i class="fas fa-share-alt"></i> shared</span>`
-                : "";
-
-            // Build detail list items
-            let detailsHTML = "";
-
-            // Validity
-            if (p.validity) {
-              detailsHTML += `<li><i class="far fa-clock"></i> <strong>Validity:</strong> ${p.validity}</li>`;
-            }
-            // Speed
-            if (p.speed) {
-              detailsHTML += `<li><i class="fas fa-wifi"></i> <strong>Speed:</strong> ${p.speed}</li>`;
-            }
-            // Data Cap
-            if (p.dataCap) {
-              detailsHTML += `<li><i class="fas fa-database"></i> <strong>Data:</strong> ${p.dataCap}${p.dataCap !== "Unlimited" ? " cap" : ""}</li>`;
-            }
-            // Devices
-            if (p.devices) {
-              const deviceIcon = p.shared ? "fa-users" : "fa-user";
-              detailsHTML += `<li><i class="fas ${deviceIcon}"></i> <strong>Devices:</strong> ${p.devices}</li>`;
-            }
-
-            // Enterprise custom note
-            const enterpriseNote =
-              p.category === "enterprise"
-                ? `<p style="font-size:0.8rem; color:#a16207; margin-top:0.3rem; font-style:italic;"><i class="fas fa-headset"></i> Contact for custom quote</p>`
-                : "";
-
-            card.innerHTML = `
-              <h3>
-                <i class="fas ${p.icon || "fa-wifi"}"></i> ${p.name}
-                ${sharedBadge}
-              </h3>
-              <div class="price">${formatPrice(p)}${p.isRange ? ' <small style="font-size:0.9rem; font-weight:500;">range</small>' : ""}</div>
-              <ul class="plan-details">
-                ${detailsHTML}
-              </ul>
-              ${enterpriseNote}
-              <button class="btn-outline" data-plan='${JSON.stringify(p).replace(/'/g, "&#39;")}'>
-                <i class="fas fa-check-circle"></i> Choose
-              </button>
-            `;
+            const card = createPlanCard(p, false);
             container.appendChild(card);
           });
 
-          // Attach click handlers to all Choose buttons
-          document
-            .querySelectorAll("#" + containerId + " .btn-outline")
-            .forEach((b) =>
-              b.addEventListener("click", (e) => {
-                openModal(JSON.parse(b.getAttribute("data-plan")));
-              }),
-            );
+          // Attach click handlers to all Choose buttons in this container
+          container.querySelectorAll(".btn-outline").forEach((b) =>
+            b.addEventListener("click", (e) => {
+              openModal(JSON.parse(b.getAttribute("data-plan")));
+            }),
+          );
+        }
+
+        // Render POS plans in offers grid
+        function renderPOSCards() {
+          const container = document.getElementById("dynamicOffersGrid");
+          if (!container) return;
+          container.innerHTML = "";
+
+          posPlansData.forEach((p) => {
+            const card = createPlanCard(p, true);
+            container.appendChild(card);
+          });
+
+          container.querySelectorAll(".btn-outline").forEach((b) =>
+            b.addEventListener("click", (e) => {
+              openModal(JSON.parse(b.getAttribute("data-plan")));
+            }),
+          );
         }
 
         renderCards("dynamicPlansGrid");
-        renderCards("dynamicOffersGrid", (p) => {
-          if (typeof p.price === "number") return p.price <= 10000;
-          return false; // exclude enterprise range from offers
+        renderPOSCards(); // POS plans in offers section
+
+        // ===== Terms and Conditions Modal Logic =====
+        const termsModal = document.getElementById("termsModal");
+        const openTermsFromCheckout = document.getElementById(
+          "openTermsFromCheckout",
+        );
+        const footerTermsLink = document.getElementById("footerTermsLink");
+        const closeTermsModalBtn =
+          document.getElementById("closeTermsModalBtn");
+        const closeTermsBtn = document.getElementById("closeTermsBtn");
+
+        function openTermsModal() {
+          termsModal.classList.add("open");
+        }
+
+        function closeTermsModal() {
+          termsModal.classList.remove("open");
+        }
+
+        openTermsFromCheckout.addEventListener("click", openTermsModal);
+        footerTermsLink.addEventListener("click", openTermsModal);
+        closeTermsModalBtn.addEventListener("click", closeTermsModal);
+        closeTermsBtn.addEventListener("click", closeTermsModal);
+
+        termsModal.addEventListener("click", function (e) {
+          if (e.target === termsModal) {
+            closeTermsModal();
+          }
         });
+
+        // ===== AI Shuffle / Chat Logic =====
+        const aiShuffleBtn = document.getElementById("aiShuffleBtn");
+        const aiChatModal = document.getElementById("aiChatModal");
+        const closeAiChatBtn = document.getElementById("closeAiChatBtn");
+        const aiChatMessages = document.getElementById("aiChatMessages");
+        const aiChatOptions = document.getElementById("aiChatOptions");
+
+        // AI conversation state
+        let aiState = {
+          step: 0,
+          answers: {
+            purpose: null,
+            screenTime: null,
+            devices: null,
+            budget: null,
+            duration: null,
+          },
+        };
+
+        // Questions flow
+        const aiQuestions = [
+          {
+            question:
+              "Hey there! 👋 I'm your AI plan advisor. Let me help you find the perfect data plan. First, what will you primarily use the data for?",
+            options: [
+              { label: "📺 Streaming", value: "streaming" },
+              { label: "💼 Work/Business", value: "work" },
+              { label: "🎮 Gaming", value: "gaming" },
+              { label: "🌐 Browsing", value: "browsing" },
+              { label: "👨‍👩‍👧 Family Sharing", value: "family" },
+            ],
+            field: "purpose",
+          },
+          {
+            question:
+              "Got it! How many hours per day do you estimate you'll be online?",
+            options: [
+              { label: "1-3 hours", value: "light" },
+              { label: "4-8 hours", value: "moderate" },
+              { label: "9-14 hours", value: "heavy" },
+              { label: "15+ hours", value: "power" },
+            ],
+            field: "screenTime",
+          },
+          {
+            question: "How many devices do you need to connect?",
+            options: [
+              { label: "Just me (1)", value: "1" },
+              { label: "2-4 devices", value: "2-4" },
+              { label: "5-7 devices", value: "5-7" },
+              { label: "8+ devices", value: "8+" },
+            ],
+            field: "devices",
+          },
+          {
+            question: "What's your budget range?",
+            options: [
+              { label: "₦0 - ₦1,000", value: "low" },
+              { label: "₦1,000 - ₦10,000", value: "medium" },
+              { label: "₦10,000 - ₦50,000", value: "high" },
+              { label: "₦50,000+", value: "premium" },
+            ],
+            field: "budget",
+          },
+          {
+            question: "Finally, how long do you need the plan for?",
+            options: [
+              { label: "Just a few hours", value: "hourly" },
+              { label: "A day or two", value: "daily" },
+              { label: "About a week", value: "weekly" },
+              { label: "A full month", value: "monthly" },
+            ],
+            field: "duration",
+          },
+        ];
+
+        function addMessage(text, type) {
+          const msgDiv = document.createElement("div");
+          msgDiv.className = type === "ai" ? "ai-msg" : "user-msg";
+          msgDiv.textContent = text;
+          aiChatMessages.appendChild(msgDiv);
+          aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+        }
+
+        function addTypingIndicator() {
+          const typingDiv = document.createElement("div");
+          typingDiv.className = "ai-typing-indicator";
+          typingDiv.innerHTML = "<span></span><span></span><span></span>";
+          typingDiv.id = "typingIndicator";
+          aiChatMessages.appendChild(typingDiv);
+          aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+          const indicator = document.getElementById("typingIndicator");
+          if (indicator) indicator.remove();
+        }
+
+        function showOptions(options, field) {
+          aiChatOptions.innerHTML = "";
+          options.forEach((opt) => {
+            const btn = document.createElement("button");
+            btn.className = "ai-option-btn";
+            btn.textContent = opt.label;
+            btn.addEventListener("click", () => {
+              aiState.answers[field] = opt.value;
+              addMessage(opt.label, "user");
+              aiChatOptions.innerHTML = "";
+              proceedToNextStep();
+            });
+            aiChatOptions.appendChild(btn);
+          });
+        }
+
+        function proceedToNextStep() {
+          if (aiState.step < aiQuestions.length) {
+            setTimeout(() => {
+              addTypingIndicator();
+              setTimeout(() => {
+                removeTypingIndicator();
+                const q = aiQuestions[aiState.step];
+                addMessage(q.question, "ai");
+                showOptions(q.options, q.field);
+                aiState.step++;
+              }, 800);
+            }, 400);
+          } else {
+            // All questions answered, make recommendation
+            setTimeout(() => {
+              addTypingIndicator();
+              setTimeout(() => {
+                removeTypingIndicator();
+                const recommendation = getRecommendation();
+                addMessage(recommendation.message, "ai");
+                // Show recommended plan as a special card-like message
+                if (recommendation.plans.length > 0) {
+                  const planNames = recommendation.plans
+                    .map(
+                      (p) =>
+                        `<strong>${p.name}</strong> - ${formatPrice(p)} (${p.validity})`,
+                    )
+                    .join("<br>");
+                  const recDiv = document.createElement("div");
+                  recDiv.className = "ai-msg";
+                  recDiv.style.background = "#fef3c7";
+                  recDiv.style.border = "2px solid #fbbf24";
+                  recDiv.innerHTML = `✅ ${planNames}<br><small style="color:#92400e;">Click any plan card on the page to order!</small>`;
+                  aiChatMessages.appendChild(recDiv);
+                  aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+                }
+
+                // Add restart button
+                const restartBtn = document.createElement("button");
+                restartBtn.className = "ai-option-btn";
+                restartBtn.textContent = "🔄 Start Over";
+                restartBtn.style.background = "#6366f1";
+                restartBtn.style.color = "white";
+                restartBtn.style.borderColor = "#6366f1";
+                restartBtn.addEventListener("click", resetAiChat);
+                aiChatOptions.appendChild(restartBtn);
+              }, 1000);
+            }, 400);
+          }
+        }
+
+        function getRecommendation() {
+          const { purpose, screenTime, devices, budget, duration } =
+            aiState.answers;
+          let recommendedPlans = [...plansData];
+
+          // Filter by duration preference
+          if (duration === "hourly") {
+            recommendedPlans = recommendedPlans.filter(
+              (p) => p.validity.includes("hour") && p.category !== "enterprise",
+            );
+          } else if (duration === "daily") {
+            recommendedPlans = recommendedPlans.filter(
+              (p) => p.validity.includes("hour") || p.validity.includes("24"),
+            );
+          } else if (duration === "weekly") {
+            recommendedPlans = recommendedPlans.filter(
+              (p) =>
+                p.validity.includes("7 days") || p.validity.includes("week"),
+            );
+          } else if (duration === "monthly") {
+            recommendedPlans = recommendedPlans.filter(
+              (p) =>
+                p.validity.includes("30 days") || p.validity.includes("month"),
+            );
+          }
+
+          // Filter by devices
+          if (devices === "1") {
+            recommendedPlans = recommendedPlans.filter(
+              (p) => p.category === "individual" || p.category === "trial",
+            );
+          } else if (devices === "2-4") {
+            recommendedPlans = recommendedPlans.filter(
+              (p) => p.category === "friends" || p.category === "individual",
+            );
+          } else if (devices === "5-7") {
+            recommendedPlans = recommendedPlans.filter(
+              (p) => p.category === "friends" || p.category === "family",
+            );
+          } else if (devices === "8+") {
+            recommendedPlans = recommendedPlans.filter(
+              (p) => p.category === "family" || p.category === "enterprise",
+            );
+          }
+
+          // Filter by budget
+          if (budget === "low") {
+            recommendedPlans = recommendedPlans.filter(
+              (p) => typeof p.price === "number" && p.price <= 1000,
+            );
+          } else if (budget === "medium") {
+            recommendedPlans = recommendedPlans.filter(
+              (p) =>
+                typeof p.price === "number" &&
+                p.price > 1000 &&
+                p.price <= 10000,
+            );
+          } else if (budget === "high") {
+            recommendedPlans = recommendedPlans.filter(
+              (p) =>
+                typeof p.price === "number" &&
+                p.price > 10000 &&
+                p.price <= 50000,
+            );
+          } else if (budget === "premium") {
+            recommendedPlans = recommendedPlans.filter(
+              (p) =>
+                (typeof p.price === "number" && p.price > 50000) ||
+                typeof p.price === "string",
+            );
+          }
+
+          // If no match, provide closest alternatives
+          if (recommendedPlans.length === 0) {
+            recommendedPlans = plansData
+              .filter(
+                (p) => p.category !== "enterprise" && p.category !== "trial",
+              )
+              .slice(0, 3);
+          }
+
+          // Limit to top 3
+          recommendedPlans = recommendedPlans.slice(0, 3);
+
+          let message = "";
+          if (recommendedPlans.length === 0) {
+            message =
+              "Hmm, I couldn't find an exact match. Here are some popular options you might like:";
+            recommendedPlans = [plansData[2], plansData[3], plansData[6]];
+          } else if (recommendedPlans.length === 1) {
+            message =
+              "Based on your needs, I found the perfect plan for you! 🎯";
+          } else {
+            message =
+              "Based on your preferences, here are my top recommendations: 🎯";
+          }
+
+          return { message, plans: recommendedPlans };
+        }
+
+        function resetAiChat() {
+          aiState = {
+            step: 0,
+            answers: {
+              purpose: null,
+              screenTime: null,
+              devices: null,
+              budget: null,
+              duration: null,
+            },
+          };
+          aiChatMessages.innerHTML = "";
+          aiChatOptions.innerHTML = "";
+          addMessage(
+            "Hi! I'm your AI plan advisor. Let's find the perfect data plan for you. 🚀",
+            "ai",
+          );
+          setTimeout(() => {
+            addTypingIndicator();
+            setTimeout(() => {
+              removeTypingIndicator();
+              const q = aiQuestions[0];
+              addMessage(q.question, "ai");
+              showOptions(q.options, q.field);
+              aiState.step = 1;
+            }, 600);
+          }, 500);
+        }
+
+        function openAiChat() {
+          aiChatModal.classList.add("open");
+          if (aiState.step === 0) {
+            resetAiChat();
+          }
+        }
+
+        function closeAiChat() {
+          aiChatModal.classList.remove("open");
+        }
+
+        aiShuffleBtn.addEventListener("click", openAiChat);
+        closeAiChatBtn.addEventListener("click", closeAiChat);
 
         // Hamburger toggle
         document
@@ -1084,7 +2514,7 @@
         }
         setInterval(() => goTo((current + 1) % slides.length), 5000);
 
-        const modal = document.getElementById("checkoutModal");
+        const checkoutModal = document.getElementById("checkoutModal");
         const successModal = document.getElementById("successModal");
         let selected = null;
 
@@ -1093,13 +2523,15 @@
           document.getElementById("modalPlanName").innerText = plan.name;
           document.getElementById("modalPlanPrice").innerText =
             formatPrice(plan);
-          modal.style.visibility = "visible";
-          modal.style.opacity = "1";
+          // Reset terms checkbox
+          document.getElementById("termsCheckbox").checked = false;
+          checkoutModal.style.visibility = "visible";
+          checkoutModal.style.opacity = "1";
         }
 
         document.getElementById("closeModalBtn").onclick = () => {
-          modal.style.visibility = "hidden";
-          modal.style.opacity = "0";
+          checkoutModal.style.visibility = "hidden";
+          checkoutModal.style.opacity = "0";
         };
 
         // Close success modal
@@ -1114,9 +2546,9 @@
         };
 
         window.onclick = (e) => {
-          if (e.target === modal) {
-            modal.style.visibility = "hidden";
-            modal.style.opacity = "0";
+          if (e.target === checkoutModal) {
+            checkoutModal.style.visibility = "hidden";
+            checkoutModal.style.opacity = "0";
           }
           if (e.target === successModal) {
             successModal.style.visibility = "hidden";
@@ -1129,6 +2561,15 @@
           .addEventListener("submit", async (e) => {
             e.preventDefault();
             if (!selected) return;
+
+            // Check terms acceptance
+            const termsCheckbox = document.getElementById("termsCheckbox");
+            if (!termsCheckbox.checked) {
+              alert(
+                "Please read and accept the Terms and Conditions before proceeding.",
+              );
+              return;
+            }
 
             const btn = e.target.querySelector("button");
             const originalText = btn.innerHTML;
@@ -1211,8 +2652,8 @@
               console.log("✅ Customer confirmation sent");
 
               // Success - hide checkout modal
-              modal.style.visibility = "hidden";
-              modal.style.opacity = "0";
+              checkoutModal.style.visibility = "hidden";
+              checkoutModal.style.opacity = "0";
 
               // Show success modal
               document.getElementById("successPlanName").innerText = planName;
