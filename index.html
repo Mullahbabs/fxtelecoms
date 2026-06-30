@@ -54,6 +54,27 @@
       name="twitter:image"
       content="https://fxttelecom.com.ng/og-image.jpg"
     />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="frame-ancestors 'self';"
+    />
+    <script>
+      (function () {
+        const allowedHosts = [
+          "fxttelecom.com.ng",
+          "www.fxttelecom.com.ng",
+          "localhost",
+          "127.0.0.1",
+        ];
+
+        const currentHost = window.location.hostname;
+
+        if (!allowedHosts.includes(currentHost)) {
+          window.location.href =
+            "https://fxttelecom.com.ng" + window.location.pathname;
+        }
+      })();
+    </script>
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://fxttelecom.com.ng" />
@@ -988,6 +1009,154 @@
         text-align: center;
       }
 
+      /* ===== Checkout Method Modal ===== */
+      #checkoutMethodModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(10, 25, 40, 0.8);
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        visibility: hidden;
+        opacity: 0;
+        transition:
+          visibility 0.3s,
+          opacity 0.3s ease;
+      }
+
+      #checkoutMethodModal .method-modal-content {
+        background: #fff7e0;
+        border-radius: 20px;
+        padding: 35px 30px;
+        max-width: 480px;
+        width: 90%;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: slideUp 0.3s ease;
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      #checkoutMethodModal .method-icon {
+        font-size: 50px;
+        margin-bottom: 15px;
+      }
+
+      #checkoutMethodModal h3 {
+        font-size: 1.5rem;
+        color: #0a1928;
+        margin-bottom: 5px;
+        font-weight: 700;
+      }
+
+      #checkoutMethodModal .plan-name-highlight {
+        color: #fbbf24;
+        background: #0a1928;
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin: 10px 0;
+      }
+
+      #checkoutMethodModal .method-options {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 25px;
+      }
+
+      .method-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 16px 24px;
+        border: none;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        width: 100%;
+      }
+
+      .method-btn i {
+        font-size: 1.2rem;
+      }
+
+      .method-btn.manual {
+        background: #0a1928;
+        color: white;
+        border: 2px solid #b45309;
+      }
+
+      .method-btn.manual:hover {
+        background: #152238;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(10, 25, 40, 0.3);
+      }
+
+      .method-btn.auto {
+        background: #b45309;
+        color: white;
+        border: 2px solid #0a1928;
+      }
+
+      .method-btn.auto:hover {
+        background: #0a1928;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+      }
+
+      .method-divider {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        color: #94a3b8;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      .method-divider::before,
+      .method-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #e2e8f0;
+      }
+
+      .close-method {
+        position: absolute;
+        right: 20px;
+        top: 15px;
+        font-size: 28px;
+        cursor: pointer;
+        color: #94a3b8;
+        line-height: 1;
+        transition: color 0.3s;
+      }
+
+      .close-method:hover {
+        color: #0a1928;
+      }
+
       /* Modal Overlay Styles */
       #checkoutModal,
       #successModal {
@@ -1334,6 +1503,37 @@
       <span><i class="fas fa-phone-alt"></i> 08154604014</span>
       <span><i class="fas fa-globe"></i> FXTTelecom.com.ng</span>
       <span><i class="fas fa-envelope"></i> Support@fxttelecom.com.ng</span>
+    </div>
+
+    <!-- Checkout Method Selection Modal -->
+    <div id="checkoutMethodModal" style="visibility: hidden; opacity: 0">
+      <div class="method-modal-content" style="position: relative">
+        <span class="close-method" id="closeMethodModalBtn">&times;</span>
+        <div class="method-icon">💳</div>
+        <h3>How would you like to checkout?</h3>
+        <div class="plan-name-highlight" id="methodPlanName"></div>
+        <div style="color: #64748b; font-size: 0.9rem; margin-top: 5px">
+          <span id="methodPlanPrice"></span>
+        </div>
+
+        <div class="method-options">
+          <button class="method-btn manual" id="manualCheckoutBtn">
+            <i class="fas fa-arrow-right"></i> Manual Checkout
+            <small style="font-weight: 400; opacity: 0.8"
+              >(Via Bank Transfer)</small
+            >
+          </button>
+
+          <div class="method-divider">OR</div>
+
+          <button class="method-btn auto" id="autoCheckoutBtn">
+            <i class="fas fa-credit-card"></i> Automatic Checkout
+            <small style="font-weight: 400; opacity: 0.8"
+              >(Instant via payment gateway)</small
+            >
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- Checkout Modal with instructions -->
@@ -1937,7 +2137,7 @@
       (function () {
         emailjs.init("EskpykFBa4pz1uXEA");
 
-        // ===== COMPLETE plansData with ALL details from FXT Telecom Pricing Report =====
+        // ===== COMPLETE plansData with WhatsApp links =====
         const plansData = [
           {
             id: "free_trial",
@@ -1950,6 +2150,7 @@
             shared: false,
             category: "trial",
             icon: "fa-gift",
+            whatsappLink: "https://paylink.monnify.com/mNPXad",
           },
           {
             id: "ind_hourly",
@@ -1962,6 +2163,7 @@
             shared: false,
             category: "individual",
             icon: "fa-clock",
+            whatsappLink: "https://paylink.monnify.com/Ind300",
           },
           {
             id: "ind_daily",
@@ -1974,6 +2176,7 @@
             shared: false,
             category: "individual",
             icon: "fa-calendar-day",
+            whatsappLink: "https://paylink.monnify.com/Ind24hrs",
           },
           {
             id: "ind_weekly",
@@ -1986,6 +2189,7 @@
             shared: false,
             category: "individual",
             icon: "fa-calendar-week",
+            whatsappLink: "https://paylink.monnify.com/Indwkly",
           },
           {
             id: "ind_monthly",
@@ -1998,6 +2202,7 @@
             shared: false,
             category: "individual",
             icon: "fa-calendar-check",
+            whatsappLink: "https://paylink.monnify.com/NRTgCh",
           },
           {
             id: "friends_weekly",
@@ -2010,6 +2215,7 @@
             shared: true,
             category: "friends",
             icon: "fa-user-friends",
+            whatsappLink: "https://paylink.monnify.com/givtcq",
           },
           {
             id: "friends_monthly",
@@ -2022,6 +2228,7 @@
             shared: true,
             category: "friends",
             icon: "fa-user-friends",
+            whatsappLink: "https://paylink.monnify.com/Fndsmnth",
           },
           {
             id: "family_weekly",
@@ -2034,6 +2241,7 @@
             shared: true,
             category: "family",
             icon: "fa-home",
+            whatsappLink: "https://paylink.monnify.com/Famweek",
           },
           {
             id: "family_monthly",
@@ -2046,6 +2254,7 @@
             shared: true,
             category: "family",
             icon: "fa-home",
+            whatsappLink: "https://paylink.monnify.com/Fammth",
           },
           {
             id: "enterprise_custom",
@@ -2059,10 +2268,11 @@
             category: "enterprise",
             icon: "fa-building",
             isRange: true,
+            whatsappLink: "https://paylink.monnify.com/Infinity",
           },
         ];
 
-        // ===== POS Plans Data (for Special Offers section) =====
+        // ===== POS Plans Data with fallback WhatsApp links =====
         const posPlansData = [
           {
             id: "pos_daily",
@@ -2076,6 +2286,7 @@
             category: "pos",
             icon: "fa-cash-register",
             posLabel: "POS",
+            whatsappLink: null,
           },
           {
             id: "pos_weekly",
@@ -2089,6 +2300,7 @@
             category: "pos",
             icon: "fa-cash-register",
             posLabel: "POS",
+            whatsappLink: null,
           },
           {
             id: "pos_monthly",
@@ -2102,6 +2314,7 @@
             category: "pos",
             icon: "fa-cash-register",
             posLabel: "POS",
+            whatsappLink: null,
           },
         ];
 
@@ -2577,21 +2790,77 @@
         }
         setInterval(() => goTo((current + 1) % slides.length), 5000);
 
+        // ===== MODALS LOGIC =====
         const checkoutModal = document.getElementById("checkoutModal");
         const successModal = document.getElementById("successModal");
+        const checkoutMethodModal = document.getElementById(
+          "checkoutMethodModal",
+        );
         let selected = null;
 
+        // ===== NEW: Open checkout method selection modal =====
         function openModal(plan) {
           selected = plan;
-          document.getElementById("modalPlanName").innerText = plan.name;
-          document.getElementById("modalPlanPrice").innerText =
+
+          // Populate the method modal with plan info
+          document.getElementById("methodPlanName").innerText = plan.name;
+          document.getElementById("methodPlanPrice").innerText =
             formatPrice(plan);
-          // Reset terms checkbox
-          document.getElementById("termsCheckbox").checked = false;
-          checkoutModal.style.visibility = "visible";
-          checkoutModal.style.opacity = "1";
+
+          // Show the method selection modal
+          checkoutMethodModal.style.visibility = "visible";
+          checkoutMethodModal.style.opacity = "1";
         }
 
+        // ===== NEW: Proceed to manual checkout =====
+        document
+          .getElementById("manualCheckoutBtn")
+          .addEventListener("click", () => {
+            // Hide method modal
+            checkoutMethodModal.style.visibility = "hidden";
+            checkoutMethodModal.style.opacity = "0";
+
+            // Open the existing checkout modal
+            document.getElementById("modalPlanName").innerText = selected.name;
+            document.getElementById("modalPlanPrice").innerText =
+              formatPrice(selected);
+            document.getElementById("termsCheckbox").checked = false;
+            checkoutModal.style.visibility = "visible";
+            checkoutModal.style.opacity = "1";
+          });
+
+        // ===== NEW: Redirect to WhatsApp for auto checkout =====
+        document
+          .getElementById("autoCheckoutBtn")
+          .addEventListener("click", () => {
+            // Check if plan has a WhatsApp link
+            if (selected.whatsappLink) {
+              // Redirect to the plan's WhatsApp payment link
+              window.open(selected.whatsappLink, "_blank");
+            } else {
+              // Fallback for plans without specific link (POS plans, etc.)
+              window.open(
+                "https://wa.me/2348154604014?text=Hello%20FXT%20Telecom!%20I%20want%20to%20purchase%20the%20" +
+                  encodeURIComponent(selected.name) +
+                  "%20plan.",
+                "_blank",
+              );
+            }
+
+            // Hide method modal
+            checkoutMethodModal.style.visibility = "hidden";
+            checkoutMethodModal.style.opacity = "0";
+          });
+
+        // ===== Close method modal =====
+        document
+          .getElementById("closeMethodModalBtn")
+          .addEventListener("click", () => {
+            checkoutMethodModal.style.visibility = "hidden";
+            checkoutMethodModal.style.opacity = "0";
+          });
+
+        // Checkout modal close button
         document.getElementById("closeModalBtn").onclick = () => {
           checkoutModal.style.visibility = "hidden";
           checkoutModal.style.opacity = "0";
@@ -2608,6 +2877,7 @@
           successModal.style.opacity = "0";
         };
 
+        // Update window.onclick to include ALL modals
         window.onclick = (e) => {
           if (e.target === checkoutModal) {
             checkoutModal.style.visibility = "hidden";
@@ -2617,8 +2887,13 @@
             successModal.style.visibility = "hidden";
             successModal.style.opacity = "0";
           }
+          if (e.target === checkoutMethodModal) {
+            checkoutMethodModal.style.visibility = "hidden";
+            checkoutMethodModal.style.opacity = "0";
+          }
         };
 
+        // ===== CHECKOUT FORM SUBMISSION =====
         document
           .getElementById("checkoutForm")
           .addEventListener("submit", async (e) => {
